@@ -1,12 +1,22 @@
-<ul class="list-group" *ngIf="loaded && logs?.length > 0">
-  <li *ngFor="let log of logs" [class.list-group-item-secondary]="selectedLog === log" class="list-group-item d-flex justify-content-between align-items-center">
-    <a (click)="onSelect(log)" href="#">{{ log.text }}</a>
-    <span class="log-date">{{ log.date | date: 'short' }}</span>
-    <i (click)="onDelete(log)" class="fa fa-remove"></i>
+<ul id="logs" class="list-group" *ngIf="loaded && logs?.length > 0">
+  <li *ngFor="let log of logs" [class.list-group-item-info]="selectedLog === log" class="list-group-item">
+    <div class="row">
+      <div class="col-5 col-sm-4 d-flex align-items-center">
+        <a (click)="onSelect(log)" href="#">{{ log.text }}</a>
+      </div>
+      <div class="col-5 col-sm-4 d-flex align-items-center justify-content-center">
+          <span class="log-date">{{ log.date | date: 'short' }}</span>
+      </div>
+      <div class="col-2 col-sm-4 d-flex align-items-center justify-content-end">
+          <i (click)="onDelete(log)" class="btn btn-sm btn-danger fa fa-remove"></i>
+      </div>
+    </div>
   </li>
 </ul>
-<div *ngIf="loaded && logs.length == 0">
-  <h5>There are no logs in the system</h5>
+<div class="text-center" *ngIf="loaded && logs.length == 0">
+  <h5 class="mb-4">There are no logs in the system. Add a log to begin.</h5>
+  <p>Logs will be stored using local storage. Once you delete a log, it will also be deleted in local storage.</p>
+  <p>You can update any log by clicking on the log title.</p>
 </div>
 <div *ngIf="!loaded">
   <h5>Loading ...</h5>

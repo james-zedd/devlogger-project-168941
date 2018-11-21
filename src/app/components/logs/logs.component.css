@@ -1,3 +1,11 @@
 span.log-date {
   color: #777;
 }
+
+ul li:nth-child(even) {
+  background-color: #f8f8f8;
+}
+
+ul li.list-group-item-info {
+  background-color: #bee5eb;
+}
